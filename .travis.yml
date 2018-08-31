@@ -1,0 +1,18 @@
+language: minimal
+
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker build -t malramsay/hoomd-core .
+
+script:
+  - docker run malramsay/hoomd-core
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
